@@ -16,14 +16,9 @@ FROM (SELECT *,
              GROUP BY j2.GroupNo) AS JobCount_byGroupNo
       FROM t_MealHrs) j
 
-WHERE JobNo = 759663
 GROUP BY JobNo
 ORDER BY GroupNo
 ;
-
-
-### GrossHrs
-
 
 
 
