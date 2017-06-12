@@ -146,45 +146,4 @@ SELECT MoverID, FirstName,
       AND   (t1.JobDate + INTERVAL TIME_TO_SEC(t1.JobTime) SECOND) >=  (t2.JobDate + INTERVAL TIME_TO_SEC(t2.JobTime) SECOND))>40, 'OT', '') AS OT
       
 FROM output1 t1
-#AND JobNo = 764586
 ORDER BY MoverID, PayDateStart, JobDate, JobTime;
-
-
-
---------------------------------------
------- Calculation -------------------
---------------------------------------
-
-CREATE TABLE output2(
-  MoverID                     INTEGER,
-  FirstName                   VARCHAR(30),
-  PayDateStart                DATE,
-  JobDate                     DATE,
-  JobTime                     TIME,
-  JobNo                       INTEGER,
-  MoverCount                  INTEGER,
-  NumJobsByWeek               INTEGER,  
-  NetHrs                      DECIMAL(10,2),
-  CumNetHrs                   DECIMAL(10,2),
-  SumNetHrs                   DECIMAL(10,2),
-  DailyExtra_Week             DECIMAL(10,2),
-  DailyExtra_Job              DECIMAL(10,2),
-  TotalPay_Week               DECIMAL(10,2),
-  CommPay_Week                DECIMAL(10,2),
-  TotalSubByWeek              DECIMAL(10,2),
-  OT                          VARCHAR(2),
-  SubsidyPay_Job              DECIMAL(10,2),
-  SubPayByJobByMover          DECIMAL(10,2),
-  
-  CONSTRAINT PKoutput2 PRIMARY KEY(MoverID, JobNo),
-  CONSTRAINT FKtest441 FOREIGN KEY(MoverID) REFERENCES Mover(MoverID),
-  CONSTRAINT FKtest442 FOREIGN KEY(JobNo) REFERENCES Job(JobNo)
-);
-
-
-
-
-
-
-
-
