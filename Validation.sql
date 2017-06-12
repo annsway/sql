@@ -118,9 +118,7 @@ WHERE JobNo = 854146
 GROUP BY JobNo;
 
 
-SELECT Mileage, Stairs_charge FROM job
-WHERE JobNo = 852502;
-
+SELECT Mileage, Stairs_charge FROM job;
 
 
 
