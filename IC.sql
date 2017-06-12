@@ -88,6 +88,5 @@ SELECT job.jobNo,
        FORMAT(ic.LaborCost/(job.Cubic_feet + job.Extra_cubic_feet),2) AS CostPerCF,
        job.Origin_zip
 FROM job JOIN ic ON ic.JobNo = job.JobNo
-WHERE ic.IC <> 'Paya Inc'
-ORDER BY CostPerCF DESC #LIMIT 10
+ORDER BY CostPerCF DESC LIMIT 10
 ;
