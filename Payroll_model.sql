@@ -1,14 +1,3 @@
-DROP TABLE output;
-DROP TABLE subsidy;
-DROP TABLE ic;
-
-DROP TABLE jobdetail;
-DROP TABLE timeclock;
-
-DROP TABLE job;
-DROP TABLE mover;
-
-
 CREATE TABLE Job(
   Branch                        VARCHAR(200),
   Job_status                    VARCHAR(200),
@@ -189,18 +178,6 @@ CREATE TABLE TimeClock(
   ProratedMinWeekly            DECIMAL(10,2),
   TotalPay2                    DECIMAL(10,2),
  
---   Subsidy                       DECIMAL(10,2),
---   SubsidyPaid                   DECIMAL(10,2),
---   Comm_NonComm_Adj              DECIMAL(10,2),
---   Other_NonComm                 DECIMAL(10,2),
---   TotPayExSubsidy               DECIMAL(10,2),
---   CalcSubsidy                   DECIMAL(10,2),
---   VAR                           DECIMAL(10,2),
---   NetCommHrsBracket             VARCHAR(20),
---   OThrs                         DECIMAL(10,2),
---   SubPercentComm                DECIMAL(10,2),
---   FirstLast                     VARCHAR(100),
---   
   PayDateStart                  DATE,
   PayDateEnd                    DATE,
   CONSTRAINT PKTimeClock2 PRIMARY KEY (MoverID, PayDateStart), 
@@ -214,16 +191,11 @@ CREATE TABLE TimeClock_new(
   FirstName                     VARCHAR(50),
   LastName                      VARCHAR(50),
   Role                          VARCHAR(50),
-  
-  #Level                        VARCHAR(50),
-  
+ 
   CommHrs                       DECIMAL(10,2),
   MealHrs                       DECIMAL(10,2),
   NetCommHrs                    DECIMAL(10,2),
   CommPay                       DECIMAL(10,2),
-  
-  #BonusPay                     DECIMAL(10,2),
-  #CommWithBonus                DECIMAL(10,2),
   
   NonCommHrs                    DECIMAL(10,2),
   NonCommMealHrs                DECIMAL(10,2),
@@ -235,16 +207,7 @@ CREATE TABLE TimeClock_new(
   CalculatedMin                 DECIMAL(10,2),
   ShiftPay                      DECIMAL(10,2),
   
-  #OtherPay                     DECIMAL(10,2),
-  
   TotalPay                      DECIMAL(10,2),
-  
-  #Adjustment                   DECIMAL(10,2),
-  #AdjPaid                      DECIMAL(10,2),
-  #DaysAvail                    DECIMAL(10,2),
-  #MinWeekly                    DECIMAL(10,2),
-  #ProratedMinWeekly            DECIMAL(10,2),
-  #TotalPay2                    DECIMAL(10,2),
  
   Subsidy                       DECIMAL(10,2),
   SubsidyPaid                   DECIMAL(10,2),
@@ -263,42 +226,4 @@ CREATE TABLE TimeClock_new(
   CONSTRAINT PKTimeClock PRIMARY KEY (MoverID, PayDateStart), 
   CONSTRAINT FKMover2    FOREIGN KEY(MoverID) REFERENCES Mover(MoverID)
 );
-
-
-
-
-
-CREATE TABLE Subsidy(
-  JobNo                         INTEGER,
-  MoverCountPlanned             INTEGER,
-  CommHrs                       DECIMAL(10,2),
-  TotalPaid                     DECIMAL(10,2),
-  ActHrRate                     DECIMAL(10,2),
-  Subsidy                       VARCHAR(20),
-  SubsidyPay                    DECIMAL(10,2),
-  SubsidyPercent                DECIMAL(10,2),
-  Mileage                       DECIMAL(10,2),
-  MoveType                      VARCHAR(30),
-  JobDate                       DATE,
-  CubicFeet                     DECIMAL(10,2),
-  EstTime                       DECIMAL(10,2),
-  Diff                          DECIMAL(10,2),
-  SubPerMover                   DECIMAL(10,2),
-  CostofMove                    DECIMAL(10,2),
-  AddCostsPercent               DECIMAL(10,2),
-  Packing                       DECIMAL(10,2),
-  Stairs                        DECIMAL(10,2),
-  SpecialServices               DECIMAL(10,2),
-  TotalCost_Paid                DECIMAL(10,2),
-  
-  CONSTRAINT PKsubsidy1 PRIMARY KEY (JobNo)
-);
-
-
-
-
-
-
-
-
 
